@@ -24,12 +24,14 @@ Vagrant.configure(2) do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
 
-  config.vm.provider "virtualbox" do |vb|
-    vb.memory = "1024"
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 1024
+    v.cpus = 2
   end
 
-  config.vm.provider "vmware_fusion" do |vb|
-    vb.memory = "1024"
+  config.vm.provider "vmware_fusion" do |v|
+    v.memory = 1024
+    v.cpus = 2
   end
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
