@@ -13,7 +13,7 @@ wget -q https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
 chmod a+x lein
 sudo -u vagrant lein
 
-# OpenCV
+# OpenCV: http://docs.opencv.org/doc/tutorials/introduction/clojure_dev_intro/clojure_dev_intro.html
 apt-get install -y unzip
 apt-get install -y cmake
 apt-get install -y ant
