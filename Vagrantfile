@@ -23,16 +23,25 @@ Vagrant.configure(2) do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
+  config.vm.network "forwarded_port", guest: 8081, host: 8081
 
-  config.vm.provider "virtualbox" do |v|
-    v.memory = 1024
-    v.cpus = 2
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 1024
+    vb.cpus = 2
+    # http://code-chronicle.blogspot.com/2014/08/connect-usb-device-through-vagrant.html
+    vb.customize ["modifyvm", :id, "--usb", "on"]
+    vb.customize ["modifyvm", :id, "--usbehci", "on"]
+    vb.customize ["usbfilter", "add", "0",
+                  "--target", :id,
+                  "--name", "c8b6e905-fd93-498b-ba28-c985cd4aa4f5",
+                  "--manufacturer", "HD Camera Manufacturer",
+                  "--product", "USB 2.0 Camera"]
   end
 
-  config.vm.provider "vmware_fusion" do |v|
-    v.memory = 1024
-    v.cpus = 2
-    v.vmx["usb.autoConnect.device0"] = "0x05a3:0x9310"
+  config.vm.provider "vmware_fusion" do |vm|
+    vm.memory = 1024
+    vm.cpus = 2
+    vm.vmx["usb.autoConnect.device0"] = "0x05a3:0x9310"
   end
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
