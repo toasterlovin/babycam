@@ -19,3 +19,8 @@ make
 make install
 ldconfig
 cd ~ && rm -rf opencv-3.1.0
+
+# Webcam Permissions
+chown root.video /dev/usb/video0
+chmod g+rw /dev/v4l/video0
+adduser vagrant video
