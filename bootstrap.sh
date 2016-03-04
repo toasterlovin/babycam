@@ -17,4 +17,5 @@ mkdir build && cd build
 cmake ..
 make
 make install
+ldconfig
 cd ~ && rm -rf opencv-3.1.0
