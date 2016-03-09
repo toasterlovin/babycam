@@ -13,7 +13,8 @@ int main() {
 
   int frame_width  = cap.get(CV_CAP_PROP_FRAME_WIDTH);
   int frame_height = cap.get(CV_CAP_PROP_FRAME_HEIGHT);
-  VideoWriter video("out.avi", CV_FOURCC('M', 'J', 'P', 'G'), 10, Size(frame_width, frame_height), true);
+  int four_cc = CV_FOURCC('F', 'M', 'P', '4');
+  VideoWriter video("out.avi", four_cc, 10, Size(frame_width, frame_height), true);
 
   for (;;) {
     Mat frame;
